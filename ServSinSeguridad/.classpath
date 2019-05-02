@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="//CODD.sis.virtual.uniandes.edu.co/Estudiantes/Profiles/jpr.arango10/Documents/2019-1/Infracomp/Caso 3/ServConSeguridad/externalLib/bcpg-jdk15on-155.jar"/>
-	<classpathentry kind="lib" path="//CODD.sis.virtual.uniandes.edu.co/Estudiantes/Profiles/jpr.arango10/Documents/2019-1/Infracomp/Caso 3/ServConSeguridad/externalLib/bcpkix-jdk15on-155.jar"/>
-	<classpathentry kind="lib" path="//CODD.sis.virtual.uniandes.edu.co/Estudiantes/Profiles/jpr.arango10/Documents/2019-1/Infracomp/Caso 3/ServConSeguridad/externalLib/bcprov-jdk15on-155.jar"/>
+	<classpathentry kind="lib" path="externalLib/bcpg-jdk15on-155.jar"/>
+	<classpathentry kind="lib" path="externalLib/bcpkix-jdk15on-155.jar"/>
+	<classpathentry kind="lib" path="externalLib/bcprov-jdk15on-155.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
