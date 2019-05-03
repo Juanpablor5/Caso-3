@@ -8,19 +8,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.lang.management.ManagementFactory;
 import java.net.Socket;
 import java.security.cert.CertificateFactory;
 import java.util.Scanner;
 
-import javax.management.Attribute;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-import javax.swing.text.html.parser.AttributeList;
-import javax.xml.bind.DatatypeConverter;
 import java.security.cert.X509Certificate;
 import org.bouncycastle.util.encoders.Hex;
-import seguridad.Seguridad;
+import logic.Seguridad;
+
+import carga.Generador;
 
 public class ClienteSeguro {
 

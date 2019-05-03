@@ -11,7 +11,9 @@ import java.util.Scanner;
 
 import org.bouncycastle.util.encoders.Hex;
 
-import seguridad.Seguridad;
+import logic.Seguridad;
+
+import carga.Generador;
 
 public class ClienteInseguro {
 	
