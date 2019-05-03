@@ -1,4 +1,4 @@
-package srv;
+package srvInseguro;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +9,12 @@ import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
 
+import srvInseguro.D;
+import srvInseguro.S;
+
 public class C {
 	private static ServerSocket ss;	
-	private static final String MAESTRO = "MAESTRO: ";
+	private static final String MAESTRO = "MAESTRO SIN SEGURIDAD: ";
 	private static X509Certificate certSer; /* acceso default */
 	private static KeyPair keyPairServidor; /* acceso default */
 	

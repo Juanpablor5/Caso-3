@@ -1,4 +1,4 @@
-package srv;
+package srvInseguro;
 
 import java.math.BigInteger;
 import java.security.KeyPair;
