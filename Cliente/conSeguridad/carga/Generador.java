@@ -19,7 +19,7 @@ public class Generador {
 	public static int gapBetweenGap;
 	private PrintWriter writer;
 	public static int nThreads;
-	long[] tiempoRespuestaConsulta = new long[numberOfTasks]; // 10 =Numero de itraciones
+	long[] tiempoRespuestaConsulta = new long[numberOfTasks]; // 10 =Numero de iteraciones
 	long[] transaccionesFallidas = new long[numberOfTasks];
 	long[] tiempoVerificacion = new long[numberOfTasks];
 	

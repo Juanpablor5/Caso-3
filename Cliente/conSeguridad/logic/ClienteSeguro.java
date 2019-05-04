@@ -32,19 +32,19 @@ public class ClienteSeguro {
 	public static final String[] ALGS_SIMETRICOS = { "AES", "Blowfish" };
 	public static final String[] ALGS_ASIMETRICOS = { "RSA" };
 	public static final String[] ALGS_HMAC = { "HMACMD5", "HMACSHA1", "HMACSHA256" };
-	
+
 	private final static String PATH = "./Data/config.prop";
-	
+
 	// ------------------------------------------------------------
 	// ------------------------Atributos---------------------------
 	// ------------------------------------------------------------
-	
+
 	private Socket socketCliente;
 	private Scanner sc;
 	private BufferedReader reader;
 	private PrintWriter writer;
 	private Seguridad seguridad;
-	
+
 	// ------------------------------------------------------------
 	// ------------------------New---------------------------------
 	// ------------------------------------------------------------
@@ -56,26 +56,26 @@ public class ClienteSeguro {
 	public static long nTransaccionesAtendidas;
 	public static long nTransaccionesPerdidas;
 	public static long cpu;
-
+	
 	// ------------------------------------------------------------
 	// ----------------------Constructor---------------------------
 	// ------------------------------------------------------------
-	
+
 	public ClienteSeguro() {
 		try {
 
 			System.out.println("----------------Caso 3 - Infraestructura Computacional----------------");
 			sc = new Scanner(System.in);
-			
+
 			Properties prop = new Properties();
 			try (FileInputStream in = new FileInputStream(PATH)) {
 				prop.load(in);
 			}
-			
+
 			String host = prop.getProperty("host");
 			int puerto = Integer.parseInt(prop.getProperty("puerto"));
-						
-			seguridad = new Seguridad();			
+
+			seguridad = new Seguridad();
 			socketCliente = new Socket(host, puerto);
 			socketCliente.setKeepAlive(true);
 			writer = new PrintWriter(socketCliente.getOutputStream(), true);
