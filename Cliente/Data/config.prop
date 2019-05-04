@@ -1,0 +1,8 @@
+puerto = 3000
+host = 192.168.1.24
+# Numero de threads: 1 o 2
+nThreads = 1
+# Numero de tasks: 80, 200 o 400
+nTask = 80
+# Gap entre tasks: 100, 40 o 20
+gap = 100

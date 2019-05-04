@@ -1,7 +1,11 @@
 package carga;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Properties;
+import java.util.Scanner;
 
 import uniandes.gload.core.LoadGenerator;
 import uniandes.gload.core.Task;
@@ -18,12 +22,24 @@ public class Generador {
 	long[] tiempoRespuestaConsulta = new long[numberOfTasks]; // 10 =Numero de itraciones
 	long[] transaccionesFallidas = new long[numberOfTasks];
 	long[] tiempoVerificacion = new long[numberOfTasks];
+	
+	private final static String PATH = "./Data/config.prop";
 
-	public Generador() {
-		nThreads = 1;
+	public Generador() throws FileNotFoundException, IOException {
+        
+		Properties prop = new Properties();
+		try (FileInputStream in = new FileInputStream(PATH)) {
+			prop.load(in);
+		}
+		
+		int numThreads = Integer.parseInt(prop.getProperty("nThreads"));
+		int nTask = Integer.parseInt(prop.getProperty("nTask"));
+		int gap = Integer.parseInt(prop.getProperty("gap"));
+		
+		nThreads = numThreads;
 		work = crearTask();
-		numberOfTasks = 400; // 400,20,80
-		gapBetweenGap = 20;// 20,40,100
+		numberOfTasks = nTask;
+		gapBetweenGap = gap;
 		try {
 			writer = new PrintWriter(
 					"./docs/datosTransaccionesPerdidas" + nThreads + "-" + numberOfTasks + "-" + gapBetweenGap);
@@ -41,7 +57,7 @@ public class Generador {
 		return new ClientServerTask();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		@SuppressWarnings("unused")
 		Generador gen = new Generador();

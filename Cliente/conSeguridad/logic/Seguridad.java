@@ -19,11 +19,7 @@ import logic.ClienteSeguro;
 
 @SuppressWarnings("deprecation")
 public class Seguridad {
-
-
 	
-
-
 	private String padding;
 	private String aSimetrico;
 	private SecretKey key;

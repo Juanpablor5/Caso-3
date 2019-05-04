@@ -3,6 +3,7 @@ package logic;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.security.cert.CertificateFactory;
+import java.util.Properties;
 import java.util.Scanner;
 
 import java.security.cert.X509Certificate;
@@ -19,21 +21,33 @@ import logic.Seguridad;
 import carga.Generador;
 
 public class ClienteSeguro {
-
+	// ------------------------------------------------------------
+	// -----------------------Constantes---------------------------
+	// ------------------------------------------------------------
 	public static final String HOLA = "HOLA";
 	public static final String OK = "OK";
 	public static final String AlGORITMOS = "ALGORITMOS";
 	public static final String ERROR = "ERROR";
 	public static final String SEPARADOR = ":";
-	public static final int PUERTO = 8080;
 	public static final String[] ALGS_SIMETRICOS = { "AES", "Blowfish" };
 	public static final String[] ALGS_ASIMETRICOS = { "RSA" };
 	public static final String[] ALGS_HMAC = { "HMACMD5", "HMACSHA1", "HMACSHA256" };
+	
+	private final static String PATH = "./Data/config.prop";
+	
+	// ------------------------------------------------------------
+	// ------------------------Atributos---------------------------
+	// ------------------------------------------------------------
+	
 	private Socket socketCliente;
 	private Scanner sc;
 	private BufferedReader reader;
 	private PrintWriter writer;
 	private Seguridad seguridad;
+	
+	// ------------------------------------------------------------
+	// ------------------------New---------------------------------
+	// ------------------------------------------------------------
 
 	public static long timeVertificacion;
 	public static long timeRespuesta;
@@ -43,14 +57,26 @@ public class ClienteSeguro {
 	public static long nTransaccionesPerdidas;
 	public static long cpu;
 
+	// ------------------------------------------------------------
+	// ----------------------Constructor---------------------------
+	// ------------------------------------------------------------
+	
 	public ClienteSeguro() {
 		try {
 
-			System.out.println("----------------Caso 2 - Infraestructura Computacional----------------");
+			System.out.println("----------------Caso 3 - Infraestructura Computacional----------------");
 			sc = new Scanner(System.in);
-			// Inicializar el servidor en el puerto 1000
-			seguridad = new Seguridad();
-			socketCliente = new Socket("192.168.1.63", PUERTO);
+			
+			Properties prop = new Properties();
+			try (FileInputStream in = new FileInputStream(PATH)) {
+				prop.load(in);
+			}
+			
+			String host = prop.getProperty("host");
+			int puerto = Integer.parseInt(prop.getProperty("puerto"));
+						
+			seguridad = new Seguridad();			
+			socketCliente = new Socket(host, puerto);
 			socketCliente.setKeepAlive(true);
 			writer = new PrintWriter(socketCliente.getOutputStream(), true);
 			reader = new BufferedReader(new InputStreamReader(socketCliente.getInputStream()));
